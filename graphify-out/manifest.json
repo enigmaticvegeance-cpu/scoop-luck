@@ -1,0 +1,82 @@
+{
+  "Z:\\Meme\\ScoopLuck\\.claude\\settings.local.json": {
+    "mtime": 1782714635.6075258,
+    "ast_hash": "203d63bc79cabd6d94153be907cff2c0",
+    "semantic_hash": "203d63bc79cabd6d94153be907cff2c0"
+  },
+  "Z:\\Meme\\ScoopLuck\\.prettierrc.json": {
+    "mtime": 1782712486.2405968,
+    "ast_hash": "d26ad2129e3296be649f8e769364e33e",
+    "semantic_hash": "d26ad2129e3296be649f8e769364e33e"
+  },
+  "Z:\\Meme\\ScoopLuck\\app\\layout.tsx": {
+    "mtime": 1782712537.397899,
+    "ast_hash": "1ffed52a6c765e479c51fc1052aa988a",
+    "semantic_hash": "1ffed52a6c765e479c51fc1052aa988a"
+  },
+  "Z:\\Meme\\ScoopLuck\\lib\\env.ts": {
+    "mtime": 1782712573.4495378,
+    "ast_hash": "7ce66d341d12314b618cbf11bf274080",
+    "semantic_hash": "7ce66d341d12314b618cbf11bf274080"
+  },
+  "Z:\\Meme\\ScoopLuck\\lib\\prisma.ts": {
+    "mtime": 1782712678.1189787,
+    "ast_hash": "9115dfa7035f7d6db335a92774934606",
+    "semantic_hash": "9115dfa7035f7d6db335a92774934606"
+  },
+  "Z:\\Meme\\ScoopLuck\\lib\\utils.ts": {
+    "mtime": 1782712596.8419225,
+    "ast_hash": "593243a332a2b9c1672329e40335642e",
+    "semantic_hash": "593243a332a2b9c1672329e40335642e"
+  },
+  "Z:\\Meme\\ScoopLuck\\next-env.d.ts": {
+    "mtime": 1782712486.0816035,
+    "ast_hash": "045a49e17bf6d10acba7b09bd3821e1e",
+    "semantic_hash": "045a49e17bf6d10acba7b09bd3821e1e"
+  },
+  "Z:\\Meme\\ScoopLuck\\next.config.mjs": {
+    "mtime": 1782712486.1162968,
+    "ast_hash": "cb6826009d5c933fba76b19453258b06",
+    "semantic_hash": "cb6826009d5c933fba76b19453258b06"
+  },
+  "Z:\\Meme\\ScoopLuck\\package.json": {
+    "mtime": 1782712430.6528518,
+    "ast_hash": "53fd590920b1b774f17daf0efba819a7",
+    "semantic_hash": "53fd590920b1b774f17daf0efba819a7"
+  },
+  "Z:\\Meme\\ScoopLuck\\postcss.config.mjs": {
+    "mtime": 1782712486.2004457,
+    "ast_hash": "c6b223994720cbbb46eb850686641b34",
+    "semantic_hash": "c6b223994720cbbb46eb850686641b34"
+  },
+  "Z:\\Meme\\ScoopLuck\\prisma.config.ts": {
+    "mtime": 1782711263.504311,
+    "ast_hash": "f6143a6083213d512c0beaa8d98daf63",
+    "semantic_hash": "f6143a6083213d512c0beaa8d98daf63"
+  },
+  "Z:\\Meme\\ScoopLuck\\supabase\\.temp\\linked-project.json": {
+    "mtime": 1782711744.0773559,
+    "ast_hash": "d9ab90a80c4db9e06662b181599043eb",
+    "semantic_hash": "d9ab90a80c4db9e06662b181599043eb"
+  },
+  "Z:\\Meme\\ScoopLuck\\tailwind.config.ts": {
+    "mtime": 1782712486.1618555,
+    "ast_hash": "5af47c449d1154237938325c09b14e4d",
+    "semantic_hash": "5af47c449d1154237938325c09b14e4d"
+  },
+  "Z:\\Meme\\ScoopLuck\\tsconfig.json": {
+    "mtime": 1782712486.2766314,
+    "ast_hash": "8fb4c9f882d8c07b1b8e6de4536916a5",
+    "semantic_hash": "8fb4c9f882d8c07b1b8e6de4536916a5"
+  },
+  "Z:\\Meme\\ScoopLuck\\pnpm-workspace.yaml": {
+    "mtime": 1782711140.888516,
+    "ast_hash": "3602c3fdbcced5f8d1ace70c630e3465",
+    "semantic_hash": "3602c3fdbcced5f8d1ace70c630e3465"
+  },
+  "Z:\\Meme\\ScoopLuck\\superchat_platform_prompt.txt": {
+    "mtime": 1782711806.2455895,
+    "ast_hash": "a4af4ab270d74473911cefe29c107690",
+    "semantic_hash": "a4af4ab270d74473911cefe29c107690"
+  }
+}

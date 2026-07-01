@@ -1,0 +1,241 @@
+// Scoop Luck — Prisma schema
+//
+// Naming conventions:
+//   - All primary keys are UUIDs (not auto-increment) so we can mint IDs
+//     before insert and so internal IDs never leak row count.
+//   - All timestamps are stored as UTC. Display in IST/Asia-Kolkata on the
+//     client; the database never carries a timezone.
+//   - Monetary amounts: INR stored in paise (1 INR = 100 paise, integer),
+//     USD stored in cents. `currency` field records the native one.
+//
+// Roles:
+//   - Supabase Auth owns authentication (auth.users). We mirror the role
+//     into our `users` table via the User row created on first login.
+//   - ADMIN is determined by `ADMIN_EMAILS` env. There is no path to
+//     upgrade a VIEWER to ADMIN at runtime.
+//
+// Tier assignment:
+//   - The `tier` field on Superchat is assigned server-side in the payment
+//     webhook handler ONLY, based on the verified amount. The frontend
+//     never writes this column.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  VIEWER
+  ADMIN
+}
+
+enum AuthEventKind {
+  /// Role upgraded (VIEWER → ADMIN) or downgraded (ADMIN → VIEWER)
+  /// detected on a subsequent login. The most security-relevant row.
+  ROLE_CHANGE
+  /// First time this email logged in and the User row was created.
+  /// Distinct from ROLE_CHANGE because there is no "from" role.
+  FIRST_LOGIN
+}
+
+enum Gateway {
+  RAZORPAY
+  STRIPE
+  PAYPAL
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum ProfanityCategory {
+  SLUR
+  PROFANITY
+  HATE
+  SPAM
+}
+
+model User {
+  id          String   @id @default(uuid())
+  // Supabase auth user id (sub claim) — the canonical reference. We use
+  // this to look up the row from a session, not the email.
+  supabaseId  String   @unique
+  email       String   @unique
+  displayName String?
+  avatarUrl   String?
+  role        Role     @default(VIEWER)
+  emailVerifiedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  superchats  Superchat[]
+  authEvents  AuthEvent[]
+
+  @@index([email])
+  @@index([role])
+}
+
+/// In-platform configuration. Single-row table — read on every request
+/// that needs tier thresholds or the INR/USD rate. Cacheable in Redis
+/// with a 60-second TTL because admin edits should propagate quickly
+/// but don't need to be instant for every viewer.
+model Settings {
+  id                  Int      @id @default(1)
+  maxDonationPaise    Int      @default(1000000) // ₹10,000 default
+  minDonationPaise    Int      @default(2000)    // ₹20 default
+  inrPerUsd           Decimal  @default(83) @db.Decimal(10, 4)
+  // Paise-per-character ceiling per tier — UI reads for the live counter.
+  // Server enforces with Zod on submit.
+  pinHighTierSeconds  Int      @default(60)
+  pinTopTierSeconds   Int      @default(120)
+  // Free-form strings used in the invoice PDF.
+  platformLegalName   String   @default("Scoop Luck")
+  platformAddress     String?
+  platformGstin       String?
+  /// Storage object path of the UPI QR code image shown to donors on the
+  /// superchat form's "Pay with UPI" flow. NULL means no QR has been
+  /// uploaded — donors can still pay via UPI ID / Razorpay intent. The
+  /// stored value is the bucket path (e.g. "upi-qr.png"), NOT a URL —
+  /// signed URLs are minted on demand by /api/settings/upi-qr.
+  upiQrPath           String?
+  updatedAt           DateTime @updatedAt
+}
+
+/// One row per superchat. The card displayed on the live feed is a
+/// `status = PAID AND hidden = false` row, ordered by paidAt desc.
+///
+/// `gatewayOrderId` is the gateway-side identifier (Razorpay order_id,
+/// Stripe payment_intent id, or PayPal order id) and is unique. We use it
+/// to dedupe webhook deliveries — webhooks are at-least-once.
+model Superchat {
+  id                 String        @id @default(uuid())
+  userId             String?
+  user               User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  // Captured at payment time so later profile edits don't rewrite history.
+  displayName        String
+  avatarUrl          String?
+
+  message            String
+  /// Amount in the smallest unit of `currency` — paise for INR, cents for USD.
+  amountPaise        Int
+  currency           String        @default("INR")
+  /// INR-equivalent amount in paise. For INR payments this equals amountPaise;
+  /// for USD/PayPal it is computed at the admin-configured rate at webhook time.
+  inrEquivalentPaise Int
+
+  /// 1-6 tier assigned at webhook time from inrEquivalentPaise.
+  tier               Int
+
+  gateway            Gateway
+  gatewayOrderId     String        @unique
+  gatewayPaymentId   String?
+
+  status             PaymentStatus @default(PENDING)
+  webhookVerified    Boolean       @default(false)
+
+  /// Admin moderation. Soft delete — never hard delete; financial record
+  /// must persist.
+  hidden             Boolean       @default(false)
+  hiddenByAdminEmail String?
+  hiddenAt           DateTime?
+  hideReason         String?
+
+  invoiceNumber      String?       @unique
+
+  /// Idempotency key supplied by the client at order-creation time. Stored
+  /// here so the order-create endpoint can dedupe even if Redis is wiped.
+  idempotencyKey     String?       @unique
+
+  createdAt          DateTime      @default(now())
+  paidAt             DateTime?
+  refundedAt         DateTime?
+
+  @@index([status, hidden, paidAt(sort: Desc)])
+  @@index([userId])
+  @@index([gateway])
+  @@index([tier, paidAt(sort: Desc)])
+}
+
+/// One-time OTP challenges issued during the admin login flow.
+/// Created when admin enters email+password; consumed when they enter the OTP.
+///
+/// We deliberately did NOT model "session" here — Supabase Auth handles the
+/// session cookie. AdminOtpChallenge is purely the verification step.
+model AdminOtpChallenge {
+  id          String   @id @default(uuid())
+  adminEmail  String
+  /// SHA-256 hash of the 6-digit OTP — raw code never stored.
+  otpHash     String
+  expiresAt   DateTime
+  attempts    Int      @default(0)
+  /// Locked after 5 failed attempts for 15 minutes.
+  lockedUntil DateTime?
+  consumedAt  DateTime?
+  ip          String?
+  userAgent   String?
+  createdAt   DateTime @default(now())
+
+  @@index([adminEmail, expiresAt])
+}
+
+/// Profanity / slurs / spam words — admin-managed at runtime via the
+/// Settings tab. The bundled `leo-profanity` library covers English
+/// basics; this table holds additions and locale-specific terms.
+model ProfanityWord {
+  id        String            @id @default(uuid())
+  word      String            @unique
+  category  ProfanityCategory @default(PROFANITY)
+  addedBy   String?           // admin email
+  createdAt DateTime          @default(now())
+
+  @@index([category])
+}
+
+/// Per-IP brute-force counter. Keyed on (route, identifier) where
+/// identifier is email for auth, IP for payments.
+model RateLimitEvent {
+  id         String   @id @default(uuid())
+  bucket     String   // e.g. "auth:login:user@x.com" or "payments:create:1.2.3.4"
+  count      Int      @default(1)
+  windowStart DateTime
+  expiresAt  DateTime
+
+  @@unique([bucket, windowStart])
+  @@index([expiresAt])
+}
+
+/// Append-only audit trail for role assignments and first logins.
+///
+/// Written from `lib/auth.ts:getCurrentUser()` whenever:
+///   - the User row is CREATED (FIRST_LOGIN — the email joined the platform)
+///   - the User row's role CHANGES between logins (ROLE_CHANGE — an admin
+///     was promoted or demoted by editing ADMIN_EMAILS env)
+///
+/// The row is intentionally minimal: actor email + from/to role. We do
+/// NOT log every login, only the events an admin doing an audit cares
+/// about. Auth logs (Sentry + AdminOtpChallenge) cover the rest.
+model AuthEvent {
+  id          String        @id @default(uuid())
+  userId      String?
+  user        User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+  actorEmail  String
+  kind        AuthEventKind
+  fromRole    Role?
+  toRole      Role
+  createdAt   DateTime      @default(now())
+
+  // Newest-first view per user (admin UI sort).
+  @@index([userId, createdAt(sort: Desc)])
+  // Filter by event type then recency — admin UI kind filter.
+  @@index([kind, createdAt(sort: Desc)])
+  // Lookup all events for a specific email in reverse-chron order.
+  @@index([actorEmail, createdAt(sort: Desc)])
+}

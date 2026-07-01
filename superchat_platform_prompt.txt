@@ -1,0 +1,681 @@
+==========================================================================
+  SCOOP LUCK — MASTER CLAUDE CODE PROMPT
+  Production-grade · Secure · India + International Payments · Podcast-first
+==========================================================================
+
+You are my Principal Software Architect, Security Engineer, DevSecOps
+Engineer, and Senior Full-Stack Developer for a production application
+that handles real users and real money.
+
+Security, reliability, maintainability, scalability, accessibility, and
+performance are NON-NEGOTIABLE. Think like both a software engineer AND a
+penetration tester on every single line of code.
+
+--------------------------------------------------------------------------
+PROJECT OVERVIEW
+--------------------------------------------------------------------------
+
+Build a full-stack podcast superchat platform called "Scoop Luck" — a
+YouTube Superchat alternative where viewers can tip a podcast/live-stream
+crew directly, cutting out YouTube's revenue cut.
+
+The platform has three user roles:
+
+  1. ADMIN  — The podcast hosts (up to 4 people). Manage superchats,
+              view donations, configure settings. Accessed via a
+              separate /admin route with email + OTP login.
+
+  2. VIEWER — Registered, logged-in fans. Must create an account to
+              send superchats. Can set a display name + profile photo
+              (400×400px with drag/zoom/crop tool). Their name and
+              avatar appear on their superchat cards.
+
+  3. GUEST  — Unauthenticated visitors. Can ONLY view the live superchat
+              feed. Cannot send superchats. No login prompt shown unless
+              they attempt to donate (then redirect to register/login).
+              Guests have zero write access to any API endpoint.
+
+--------------------------------------------------------------------------
+TECH STACK
+--------------------------------------------------------------------------
+
+Frontend:
+  - Next.js 14 (App Router, TypeScript, strict mode)
+  - Tailwind CSS v3 + shadcn/ui for base components
+  - Framer Motion (via MCP) for all animations & transitions
+  - 21st.dev components (via MCP) for premium UI blocks
+  - React Hook Form + Zod for all form validation
+  - next-themes for dark/light mode (default: dark)
+
+Backend:
+  - Next.js API Routes (Edge Runtime where possible)
+  - Prisma ORM with PostgreSQL (Supabase hosted)
+  - Supabase Auth (email/password + OTP for admin MFA)
+  - Upstash Redis for rate limiting, session cache, idempotency keys
+
+Payments (India-first, international-ready):
+  - Razorpay — primary gateway for Indian users
+    · UPI collect + QR code flows (India only)
+    · Domestic debit/credit cards (India-issued)
+    · Net Banking + Wallets (Paytm, PhonePe, etc.)
+    · Razorpay does NOT reliably support international cards;
+      do NOT use it for international card payments
+    · Webhook signature verification (server-side only)
+    · Idempotency keys on every order creation
+  - Stripe — international card gateway (Visa/Mastercard/Amex/Discover)
+    · Used when user selects "International Card" option
+    · Stripe Checkout or Stripe Elements (PCI-DSS delegated)
+    · Stripe webhook verification with stripe.webhooks.constructEvent
+    · Supports 135+ currencies; charge in USD, display equivalent INR
+  - PayPal — secondary international gateway
+    · For users who prefer PayPal wallet or PayPal-linked cards
+    · PayPal JS SDK (client) + PayPal REST API (server)
+    · Create order server-side, capture server-side after approval
+    · Webhook: verify with PayPal SDK verifyWebhookSignature
+  - NEVER store card numbers, CVV, or UPI PINs — delegate 100% to gateway
+
+  Payment method selection UI:
+    Detect user locale (from browser Accept-Language + IP via Cloudflare
+    cf-ipcountry header) to show the most relevant options first:
+      · Indian IP  → show: UPI (default) | Indian Card | International Card | PayPal
+      · Other IP   → show: International Card (default) | PayPal | Indian Card (collapsed)
+    User can always switch manually.
+
+Infrastructure:
+  - Vercel (frontend + API routes)
+  - Supabase (Postgres + Auth + Storage for profile images)
+  - Cloudflare (WAF, DDoS, Rate Limiting, Turnstile CAPTCHA, CDN)
+  - Resend (transactional email — OTP, receipts, invoices)
+  - Sentry (error monitoring, never log PII)
+  - Upstash Redis (rate limiting middleware)
+
+--------------------------------------------------------------------------
+MCPs TO USE ACTIVELY
+--------------------------------------------------------------------------
+
+Use these MCP servers throughout development:
+
+  · 21st.dev MCP       — Pull premium, ready-made UI components for:
+                          hero sections, card layouts, pricing tiers,
+                          modals, toast notifications, data tables.
+                          Always prefer 21st.dev components over writing
+                          from scratch when a matching component exists.
+
+  · Framer Motion MCP  — Drive ALL animations:
+                          - Superchat card entrance (slide up + fade)
+                          - Neon glow pulse on new superchats
+                          - Staggered list animations in admin panel
+                          - Smooth page transitions (layoutId shared)
+                          - Profile image drag-to-crop interaction
+                          - Payment success confetti / celebration burst
+
+  · Supabase MCP       — Schema management, RLS policies, storage
+                          bucket configuration, Auth hooks.
+
+  · Prisma MCP         — Schema generation, migrations, type-safe
+                          client usage.
+
+  · Vercel MCP         — Deployment configuration, environment variable
+                          management, edge config.
+
+--------------------------------------------------------------------------
+FEATURE SPECIFICATION
+--------------------------------------------------------------------------
+
+━━━ 1. SUPERCHAT TIERS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Enforce server-side. Character limits are hard constraints validated in
+API before payment is accepted.
+
+  ┌─────────────────┬────────────┬──────────────────────────────────────┐
+  │ Amount (INR)    │ Char Limit │ Card Accent Color                    │
+  ├─────────────────┼────────────┼──────────────────────────────────────┤
+  │ ₹20  – ₹49     │ 50 chars   │ #00FFFF  (cyan neon)                 │
+  │ ₹50  – ₹99     │ 100 chars  │ #7C3AED  (purple neon)               │
+  │ ₹100 – ₹199    │ 150 chars  │ #F59E0B  (amber neon)                │
+  │ ₹200 – ₹499    │ 200 chars  │ #10B981  (green neon)                │
+  │ ₹500 – ₹999    │ 250 chars  │ #EF4444  (red neon)                  │
+  │ ₹1000 – ₹1999  │ 350 chars  │ #F97316  (orange neon, glow pulse)   │
+  │ ₹2000 – ₹2999  │ 400 chars  │ #EC4899  (pink neon, glow pulse)     │
+  │ ₹3000 – ₹4999  │ 450 chars  │ #8B5CF6  (violet neon, glow pulse)   │
+  │ ₹5000+         │ 500 chars  │ #FFD700  (gold, full animated border) │
+  └─────────────────┴────────────┴──────────────────────────────────────┘
+
+  Tier logic notes:
+  - ₹1000–₹4999 cards: continuous neon glow pulse animation, pinned to
+    top of feed for 60 seconds after arriving
+  - ₹5000+ cards: animated gradient border (full rainbow cycle, 3s loop),
+    pinned to top of feed for 120 seconds, large card size variant
+  - Minimum donation: ₹20 INR (or equivalent in USD for international)
+  - Maximum donation: ₹10,000 INR (configurable by admin, default ₹10,000)
+  - Custom amount input with real-time character counter feedback
+  - International (USD/PayPal) tiers: convert INR thresholds to USD at
+    a fixed admin-configured rate (e.g. ₹83 = $1). Never use live FX
+    to avoid manipulation. Display both currencies on the card.
+  - Tier assigned server-side based on verified payment amount in webhook,
+    NOT the amount the user typed on frontend
+
+━━━ 2. PAYMENT FLOWS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  UPI (Razorpay — India only):
+    Step 1 — User enters amount + message → hits "Pay with UPI"
+    Step 2 — Backend creates Razorpay order (server-side, signed)
+    Step 3 — User sees: (a) UPI ID input field OR (b) QR code toggle
+    Step 4 — Razorpay handles the collect/intent flow
+    Step 5 — Webhook (POST /api/webhooks/razorpay) receives event;
+             verify HMAC-SHA256 of razorpay_order_id|razorpay_payment_id
+             with webhook secret
+    Step 6 — On verified success: mark order paid in DB, assign tier,
+             enqueue superchat for display, send invoice email
+    Step 7 — On-screen invoice modal with download (PDF)
+    NEVER trust frontend "payment success" callbacks alone.
+
+  Indian Debit / Credit Card (Razorpay):
+    - Use Razorpay hosted checkout or Razorpay.js Elements
+    - Supports RuPay, domestic Visa/Mastercard issued in India
+    - PCI-DSS delegated entirely to Razorpay
+    - Same webhook verification flow as UPI
+
+  International Debit / Credit Card (Stripe):
+    - Stripe Elements or Stripe Checkout for card capture
+    - Supports Visa, Mastercard, Amex, Discover, international cards
+    - Charge in USD; show INR equivalent (at admin-configured rate)
+    - Webhook (POST /api/webhooks/stripe): verify with
+      stripe.webhooks.constructEvent(body, sig, STRIPE_WEBHOOK_SECRET)
+    - On payment_intent.succeeded: mark paid, assign tier in INR-equiv,
+      enqueue superchat, send invoice
+    - Never trust client-side paymentIntent.status
+
+  PayPal (International):
+    - PayPal JS SDK (client) + PayPal REST API (server)
+    - Create order server-side → client approves → capture server-side
+    - Webhook: verify with PayPal SDK verifyWebhookSignature
+    - Amount stored in USD, displayed as USD + approximate INR on card
+    - Same tier logic as Stripe (INR equivalent at fixed rate)
+
+  Common rules for ALL gateways:
+    · Idempotency key = UUID v4 per order, stored in Redis TTL 24h
+    · Never create duplicate orders for same idempotency key
+    · Payment status: PENDING → PAID | FAILED | REFUNDED
+    · Tier assigned server-side in webhook handler ONLY
+    · Only PAID superchats appear in the live feed
+    · Store: order_id, gateway, amount_paise_or_cents, currency,
+             inr_equivalent_paise, tier, webhook_verified, created_at, paid_at
+    · Never store: card_number, cvv, upi_pin, bank_password
+
+  Invoice / Receipt:
+    · Generated server-side with @react-pdf/renderer
+    · Fields: invoice number, date, donor name (or "Anonymous"),
+              amount (native currency + INR equivalent), gateway,
+              transaction ID, platform name "Scoop Luck", logo
+    · Emailed via Resend with PDF attachment
+    · On-screen modal with "Download PDF" button
+    · Invoice numbers: SL-INV-{YEAR}-{6-digit zero-padded sequence}
+
+━━━ 3. VIEWER PROFILE SYSTEM ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Registration:
+    - Email + password (min 12 chars, 1 upper, 1 lower, 1 number,
+      1 special char) via Supabase Auth
+    - Email verification required before first superchat
+    - Display name: 3–30 chars, alphanumeric + spaces + underscores,
+      profanity filtered server-side
+
+  Profile Photo Upload:
+    - Accepted formats: JPG, PNG, WebP only
+    - Max file size: 2 MB
+    - Required dimensions: exactly 400×400px output
+    - Upload flow:
+        1. User selects image (any reasonable size)
+        2. Browser-side: react-image-crop or react-easy-crop shows
+           a circular/square viewport with:
+             · Pinch-to-zoom / scroll-to-zoom (0.5× – 4× range)
+             · Drag to reposition
+             · On-canvas preview at 400×400
+        3. On confirm: canvas.toBlob() at 400×400, JPEG quality 0.9
+        4. Upload to Supabase Storage bucket "avatars" (private, signed URLs)
+        5. Server validates: MIME type via magic bytes (not just extension),
+           re-encodes with sharp to prevent image bomb / polyglot attacks,
+           outputs exactly 400×400 JPEG
+        6. Old avatar deleted from storage on replacement
+    - Display: circular crop in superchat cards, square in profile page
+
+━━━ 4. LIVE SUPERCHAT FEED ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Public viewer feed (read-only, unauthenticated):
+    - Real-time updates via Supabase Realtime (Postgres changes)
+    - New cards animate in from the bottom (Framer Motion: slide-up +
+      fade-in with spring easing)
+    - Each card shows:
+        · Tier accent border with neon glow (CSS box-shadow animation)
+        · Avatar (circular, 48px) or default gradient placeholder
+        · Display name (or "Anonymous")
+        · Donation amount + tier badge
+        · Message text (sanitized, HTML-escaped, no markdown rendering)
+        · Time ago (e.g. "2 min ago")
+    - ₹1000+ cards get a continuous animated border gradient and are
+      pinned to top for 60 seconds
+    - Feed auto-scrolls to newest; user can pause scroll by hovering
+
+━━━ 5. ADMIN PANEL ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Authentication:
+    - Email + password login via Supabase Auth
+    - OTP sent to email on every login (TOTP optional as upgrade)
+    - Sessions: HttpOnly, Secure, SameSite=Strict cookie, 8-hour expiry
+    - Brute-force protection: 5 failed attempts → 15-minute lockout
+      (tracked in Redis per IP + per email)
+    - All admin routes protected by server-side middleware (never
+      client-side guard only)
+
+  Admin Dashboard tabs:
+    ┌─────────────────┬─────────────────────────────────────────────────┐
+    │ Tab             │ Contents                                        │
+    ├─────────────────┼─────────────────────────────────────────────────┤
+    │ Live Feed       │ Same real-time feed + ability to HIDE/DELETE    │
+    │                 │ any superchat (soft-delete, logged)              │
+    ├─────────────────┼─────────────────────────────────────────────────┤
+    │ All Superchats  │ Paginated list, newest-first, with filters:     │
+    │                 │ date range, tier, gateway, search by name/msg   │
+    │                 │ Each row: avatar, name, amount, msg, status,    │
+    │                 │ gateway, paid_at, [View Invoice] [Hide] button  │
+    ├─────────────────┼─────────────────────────────────────────────────┤
+    │ Analytics       │ Total revenue, count by tier, count by gateway, │
+    │                 │ daily chart (recharts), top donors list          │
+    ├─────────────────┼─────────────────────────────────────────────────┤
+    │ Settings        │ Max donation amount, UPI QR image upload,       │
+    │                 │ Razorpay/PayPal key config (masked display),     │
+    │                 │ profanity word list management, admin emails     │
+    └─────────────────┴─────────────────────────────────────────────────┘
+
+  Manual Refresh:
+    - "Refresh" button in All Superchats tab re-fetches from DB
+    - Shows "Last refreshed: X seconds ago"
+    - Auto-refresh toggle (every 30s) for stream sessions
+    - Real-time badge counter on tab showing new superchats since
+      last refresh
+
+━━━ 6. VISUAL DESIGN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Overall aesthetic: Cyberpunk/neon dark mode, glassmorphism cards,
+  electric accent colors. Think Twitch × Raycast × Linear.
+
+  Design tokens:
+    --bg-base:       #0A0A0F   (near-black)
+    --bg-surface:    #12121A   (card background)
+    --bg-elevated:   #1A1A26   (modal, dropdown)
+    --border:        #2A2A3A   (subtle border)
+    --text-primary:  #F0F0FF
+    --text-muted:    #8888AA
+    --accent-cyan:   #00FFFF
+    --accent-purple: #7C3AED
+    --accent-amber:  #F59E0B
+    --glow-cyan:     0 0 20px rgba(0,255,255,0.4)
+
+  Typography:
+    - Headings: "Space Grotesk" (Google Fonts)
+    - Body: "Inter"
+    - Mono (amounts, IDs): "JetBrains Mono"
+
+  Animations (Framer Motion):
+    - Page transitions: fade + slight Y translate (200ms)
+    - Superchat card in: spring, stiffness 300, damping 30
+    - Modal open: scale 0.95→1 + fade (150ms)
+    - Button hover: scale 1.02, 100ms ease
+    - Neon glow pulse on ₹1000+ card: keyframe 0%→50%→100% opacity
+    - Profile crop tool: smooth drag with inertia
+
+  Use 21st.dev components for:
+    - Pricing/tier display cards
+    - Stats dashboard widgets
+    - Timeline/feed layout
+    - Toast/notification system
+
+--------------------------------------------------------------------------
+SECURITY REQUIREMENTS (NON-NEGOTIABLE)
+--------------------------------------------------------------------------
+
+Follow OWASP Top 10 and OWASP ASVS Level 2.
+
+INPUT VALIDATION
+  · Zod schemas on every API route input (server-side)
+  · Allow-list validation (never block-list alone)
+  · Strip all HTML from user text fields (DOMPurify server-side or
+    he/entities library — never trust sanitize-html alone)
+  · Validate content-type, request size limits on all routes
+  · File uploads: validate MIME via magic bytes with file-type package +
+    re-encode images with sharp; reject SVG entirely
+
+INJECTION PREVENTION
+  · Prisma parameterized queries only — never raw SQL string concat
+  · No eval(), no Function(), no dangerouslySetInnerHTML with user data
+  · Template injection: never pass user input to any template engine
+
+AUTH & SESSIONS
+  · Supabase Auth handles password hashing (bcrypt, never implement own)
+  · JWT verification server-side on every protected request
+  · Admin MFA: email OTP required on every login (not just first time)
+  · CSRF: SameSite=Strict cookies + Cloudflare Turnstile on all forms
+  · Session fixation: rotate session ID post-login
+
+RATE LIMITING (Upstash Redis + Vercel middleware)
+  · POST /api/payments/*          → 5 req/min per IP
+  · POST /api/superchats          → 3 req/min per IP
+  · POST /api/auth/login          → 10 req/15min per IP + email
+  · POST /api/auth/otp            → 3 req/10min per email
+  · GET  /api/admin/*             → 60 req/min per session
+  · All other public endpoints    → 100 req/min per IP
+  Return 429 with Retry-After header; log violations to Sentry
+
+PAYMENT INTEGRITY
+  · NEVER trust frontend payment status
+  · Verify Razorpay webhook: HMAC-SHA256 of
+    razorpay_order_id|razorpay_payment_id with webhook secret
+  · Verify PayPal webhook with PayPal SDK
+  · Idempotency: reject duplicate order creation for same key
+  · Amount validation: re-verify amount in webhook matches order amount
+    in DB — reject if mismatch
+  · Webhook endpoints reject non-POST and wrong content-type immediately
+
+SECURITY HEADERS (next.config.js)
+  Content-Security-Policy: default-src 'self';
+    script-src 'self' 'nonce-{nonce}' checkout.razorpay.com
+               js.stripe.com www.paypal.com static.cloudflareinsights.com;
+    style-src 'self' 'unsafe-inline' fonts.googleapis.com;
+    img-src 'self' data: blob: *.supabase.co;
+    connect-src 'self' api.razorpay.com api.stripe.com *.paypal.com
+                *.supabase.co *.sentry.io;
+    frame-src checkout.razorpay.com js.stripe.com www.paypal.com;
+    font-src 'self' fonts.gstatic.com;
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+CLOUDFLARE (configure in dashboard)
+  · WAF: OWASP Core Rule Set, India + international allow, block known
+    bad bots and scanners
+  · DDoS: Auto + rate limit rules matching API rate limits above
+  · Turnstile CAPTCHA: on payment form, login form, registration form
+  · Bot Fight Mode: ON
+  · Security Level: Medium (High during live streams)
+  · Cache: static assets only; API routes must bypass cache
+  · Zero Trust: lock /api/admin/* to specific IP ranges (optional)
+
+DATABASE SECURITY (Supabase / Postgres)
+  · Row Level Security: enabled on ALL tables
+  · Viewers: SELECT own rows only
+  · Admins: all operations on all rows (via service role, server-side)
+  · Public: SELECT on superchats WHERE status = 'PAID' AND hidden = false
+  · Never expose service role key to frontend
+  · Encrypt PII fields (email) at rest using pgcrypto if needed
+  · Use UUIDs as primary keys everywhere
+
+SECRETS MANAGEMENT
+  · All secrets in Vercel environment variables (never in code/git)
+  · Secret rotation plan documented in README.security.md
+  · .env.example with placeholder values committed
+  · .env* in .gitignore
+
+LOGGING (Sentry + custom)
+  Log:  auth attempts, admin actions, payment events, rate limit hits,
+        webhook verifications, superchat hide/delete actions
+  Never log: passwords, OTPs, card data, UPI PINs, full email addresses
+             (log only hashed email for correlation), JWT tokens
+
+ERROR HANDLING
+  · Generic error messages to client ("Something went wrong")
+  · Full error details only in Sentry
+  · No stack traces, SQL errors, or internal paths in API responses
+  · Fail closed: if auth check errors → deny access
+
+--------------------------------------------------------------------------
+DATABASE SCHEMA (Prisma)
+--------------------------------------------------------------------------
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  displayName   String?
+  avatarUrl     String?
+  role          Role      @default(VIEWER)
+  createdAt     DateTime  @default(now())
+  superchats    Superchat[]
+}
+
+model Superchat {
+  id              String    @id @default(uuid())
+  userId          String?   // null = anonymous
+  user            User?     @relation(fields: [userId], references: [id])
+  displayName     String    // captured at payment time
+  avatarUrl       String?   // captured at payment time
+  message         String
+  amountPaise     Int       // in paise (INR) or cents (USD×100)
+  currency        String    @default("INR")
+  tier            Int       // 1–6
+  gateway         Gateway
+  gatewayOrderId  String    @unique
+  gatewayPaymentId String?
+  status          PaymentStatus @default(PENDING)
+  webhookVerified Boolean   @default(false)
+  hidden          Boolean   @default(false)
+  invoiceNumber   String?   @unique
+  createdAt       DateTime  @default(now())
+  paidAt          DateTime?
+}
+
+model AdminSession {
+  id          String   @id @default(uuid())
+  adminEmail  String
+  otpHash     String
+  otpExpiry   DateTime
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+enum Role { VIEWER ADMIN }
+enum Gateway { RAZORPAY STRIPE PAYPAL }
+enum PaymentStatus { PENDING PAID FAILED REFUNDED }
+
+--------------------------------------------------------------------------
+FOLDER STRUCTURE
+--------------------------------------------------------------------------
+
+/
+├── app/
+│   ├── (public)/
+│   │   ├── page.tsx              # Landing + live feed
+│   │   ├── superchat/page.tsx    # Superchat submission form
+│   │   └── profile/page.tsx      # Viewer profile settings
+│   ├── admin/
+│   │   ├── login/page.tsx
+│   │   ├── otp/page.tsx
+│   │   └── (dashboard)/
+│   │       ├── layout.tsx        # Auth guard (server component)
+│   │       ├── page.tsx          # Live feed
+│   │       ├── all/page.tsx      # All superchats
+│   │       ├── analytics/page.tsx
+│   │       └── settings/page.tsx
+│   └── api/
+│       ├── auth/[...supabase]/route.ts
+│       ├── payments/
+│       │   ├── razorpay/create-order/route.ts
+│       │   ├── stripe/create-intent/route.ts
+│       │   └── paypal/create-order/route.ts
+│       ├── webhooks/
+│       │   ├── razorpay/route.ts
+│       │   ├── stripe/route.ts
+│       │   └── paypal/route.ts
+│       ├── superchats/route.ts
+│       ├── admin/
+│       │   ├── superchats/route.ts
+│       │   └── settings/route.ts
+│       └── invoices/[id]/route.ts
+├── components/
+│   ├── superchat/
+│   │   ├── SuperchatCard.tsx
+│   │   ├── SuperchatFeed.tsx
+│   │   └── SuperchatForm.tsx
+│   ├── payment/
+│   │   ├── PaymentMethodSelector.tsx  # UPI | Indian Card | Intl Card | PayPal
+│   │   ├── RazorpayButton.tsx
+│   │   ├── StripeElements.tsx         # International card form
+│   │   ├── PayPalButton.tsx
+│   │   ├── UPIFlow.tsx
+│   │   └── InvoiceModal.tsx
+│   ├── profile/
+│   │   └── AvatarCropper.tsx
+│   ├── admin/
+│   │   ├── SuperchatTable.tsx
+│   │   ├── AnalyticsDashboard.tsx
+│   │   └── RefreshControl.tsx
+│   └── ui/                            # shadcn/ui + 21st.dev components
+├── lib/
+│   ├── auth.ts                        # Supabase auth helpers
+│   ├── razorpay.ts                    # Razorpay server SDK wrapper
+│   ├── stripe.ts                      # Stripe server SDK wrapper
+│   ├── paypal.ts                      # PayPal server SDK wrapper
+│   ├── tier.ts                        # Tier assignment logic (INR equiv)
+│   ├── redis.ts                       # Upstash Redis client
+│   ├── rate-limit.ts                  # Rate limiting middleware
+│   ├── invoice.ts                     # PDF invoice generation
+│   ├── email.ts                       # Resend email client
+│   ├── security.ts                    # Sanitization, validation helpers
+│   └── prisma.ts                      # Prisma client singleton
+├── middleware.ts                 # Auth guard + rate limit + CSP nonce
+├── prisma/schema.prisma
+├── .env.example
+└── README.security.md
+
+--------------------------------------------------------------------------
+IMPLEMENTATION ORDER
+--------------------------------------------------------------------------
+
+Build in this order to always have a working, testable state:
+
+  Phase 1 — Foundation
+    1. Project scaffold (Next.js 14, TypeScript strict, Tailwind, shadcn)
+    2. Prisma schema + Supabase setup + RLS policies
+    3. Supabase Auth integration (viewer registration/login)
+    4. Security middleware (rate limiting, security headers, CSP nonce)
+    5. Cloudflare Turnstile integration
+
+  Phase 2 — Payments
+    6. Razorpay order creation endpoint (server-side)
+    7. Razorpay webhook handler with signature verification
+    8. UPI flow UI (UPI ID + QR code toggle)
+    9. Indian card payment via Razorpay hosted checkout
+    10. Stripe integration for international cards (Elements + webhook)
+    11. PayPal integration (create + capture order + webhook)
+    12. PaymentMethodSelector UI with locale-based default
+    13. Invoice generation (PDF) + Resend email
+    14. tier.ts utility (INR-equivalent calculation for USD payments)
+
+  Phase 3 — Core UX
+    12. Superchat submission form with tier logic + char counter
+    13. Live feed with Supabase Realtime + Framer Motion animations
+    14. Viewer profile + AvatarCropper component
+    15. Admin login + email OTP flow + brute-force lockout
+
+  Phase 4 — Admin Panel
+    16. Admin live feed with hide/delete actions
+    17. All superchats table with filters + manual refresh
+    18. Analytics dashboard (recharts)
+    19. Settings panel
+
+  Phase 5 — Polish & Security Audit
+    20. 21st.dev component integration for premium UI blocks
+    21. Full Framer Motion animation pass
+    22. OWASP checklist audit
+    23. Load test rate limiting
+    24. Penetration test payment flow
+    25. Accessibility pass (WCAG 2.2 AA)
+
+--------------------------------------------------------------------------
+TESTING REQUIREMENTS
+--------------------------------------------------------------------------
+
+  · Unit: Vitest for lib/* utilities (sanitize, tier calculation, invoice)
+  · Integration: Supertest for all API routes
+  · E2E: Playwright — happy path payments, admin login MFA, feed real-time
+  · Security: OWASP ZAP scan on staging before production deploy
+  · Payment: Razorpay test mode + PayPal sandbox for full flow tests
+
+--------------------------------------------------------------------------
+ACCESSIBILITY (WCAG 2.2 AA)
+--------------------------------------------------------------------------
+
+  · All interactive elements keyboard-navigable with visible focus ring
+  · Color contrast ≥ 4.5:1 for normal text (neon accents on dark bg)
+  · Live feed announces new superchats to screen readers (aria-live)
+  · Payment form: clear error messages associated via aria-describedby
+  · Avatar cropper: keyboard controls for zoom/pan (arrow keys + +/-)
+  · Admin tables: proper <th scope>, sortable columns announced
+
+--------------------------------------------------------------------------
+ENVIRONMENT VARIABLES (.env.example)
+--------------------------------------------------------------------------
+
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+
+# Database
+DATABASE_URL=
+
+# Razorpay
+RAZORPAY_KEY_ID=
+RAZORPAY_KEY_SECRET=
+RAZORPAY_WEBHOOK_SECRET=
+
+# Stripe (international cards)
+STRIPE_SECRET_KEY=
+STRIPE_PUBLISHABLE_KEY=
+STRIPE_WEBHOOK_SECRET=
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+
+# PayPal
+PAYPAL_CLIENT_ID=
+PAYPAL_CLIENT_SECRET=
+PAYPAL_WEBHOOK_ID=
+NEXT_PUBLIC_PAYPAL_CLIENT_ID=
+
+# Cloudflare Turnstile
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=
+TURNSTILE_SECRET_KEY=
+
+# Upstash Redis
+UPSTASH_REDIS_REST_URL=
+UPSTASH_REDIS_REST_TOKEN=
+
+# Resend
+RESEND_API_KEY=
+RESEND_FROM_EMAIL=
+
+# App
+NEXT_PUBLIC_APP_URL=
+ADMIN_EMAILS=admin1@example.com,admin2@example.com
+INVOICE_SECRET=
+
+--------------------------------------------------------------------------
+BEFORE WRITING ANY CODE — ASK YOURSELF
+--------------------------------------------------------------------------
+
+  · Can this input be exploited?
+  · Can this leak sensitive data?
+  · Can this bypass authorization?
+  · Can payment amounts be manipulated?
+  · Can bots spam this endpoint?
+  · Can a race condition create duplicate orders?
+  · Is the webhook verified before any state change?
+  · Is the session validated server-side?
+  · Is the file upload safe from polyglot/image-bomb attacks?
+
+If the answer to ANY of these is yes — redesign before writing code.
+
+==========================================================================
+  START WITH PHASE 1. Ask me before making any architectural decision
+  that isn't covered above. Flag any security concern immediately.
+==========================================================================

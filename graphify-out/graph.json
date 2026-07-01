@@ -1,0 +1,3364 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "payment_gateway_strategy",
+        "label": "Payment Gateway Strategy",
+        "nodes": [
+          "superchat_platform_prompt_razorpay",
+          "superchat_platform_prompt_stripe",
+          "superchat_platform_prompt_paypal"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "Z:\\Meme\\ScoopLuck\\superchat_platform_prompt.txt"
+      },
+      {
+        "id": "user_role_system",
+        "label": "User Role System",
+        "nodes": [
+          "superchat_platform_prompt_admin_role",
+          "superchat_platform_prompt_viewer_role",
+          "superchat_platform_prompt_guest_role"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "Z:\\Meme\\ScoopLuck\\superchat_platform_prompt.txt"
+      },
+      {
+        "id": "payment_integrity_security_layer",
+        "label": "Payment Integrity Security Layer",
+        "nodes": [
+          "superchat_platform_prompt_webhook_verification",
+          "superchat_platform_prompt_idempotency_keys",
+          "superchat_platform_prompt_rate_limiting"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "Z:\\Meme\\ScoopLuck\\superchat_platform_prompt.txt"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": ".prettierrc.json",
+      "file_type": "code",
+      "source_file": ".prettierrc.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "prettierrc",
+      "community": 6,
+      "norm_label": ".prettierrc.json"
+    },
+    {
+      "label": "$schema",
+      "file_type": "code",
+      "source_file": ".prettierrc.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "prettierrc_schema",
+      "community": 6,
+      "norm_label": "$schema"
+    },
+    {
+      "label": "semi",
+      "file_type": "code",
+      "source_file": ".prettierrc.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "prettierrc_semi",
+      "community": 6,
+      "norm_label": "semi"
+    },
+    {
+      "label": "singleQuote",
+      "file_type": "code",
+      "source_file": ".prettierrc.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "prettierrc_singlequote",
+      "community": 6,
+      "norm_label": "singlequote"
+    },
+    {
+      "label": "trailingComma",
+      "file_type": "code",
+      "source_file": ".prettierrc.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "prettierrc_trailingcomma",
+      "community": 6,
+      "norm_label": "trailingcomma"
+    },
+    {
+      "label": "printWidth",
+      "file_type": "code",
+      "source_file": ".prettierrc.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "prettierrc_printwidth",
+      "community": 6,
+      "norm_label": "printwidth"
+    },
+    {
+      "label": "tabWidth",
+      "file_type": "code",
+      "source_file": ".prettierrc.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "prettierrc_tabwidth",
+      "community": 6,
+      "norm_label": "tabwidth"
+    },
+    {
+      "label": "plugins",
+      "file_type": "code",
+      "source_file": ".prettierrc.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "prettierrc_plugins",
+      "community": 6,
+      "norm_label": "plugins"
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_layout",
+      "community": 5,
+      "norm_label": "layout.tsx"
+    },
+    {
+      "label": "metadata",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "app_layout_metadata",
+      "community": 5,
+      "norm_label": "metadata"
+    },
+    {
+      "label": "viewport",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "app_layout_viewport",
+      "community": 5,
+      "norm_label": "viewport"
+    },
+    {
+      "label": "RootLayout()",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "app_layout_rootlayout",
+      "community": 5,
+      "norm_label": "rootlayout()"
+    },
+    {
+      "label": "env.ts",
+      "file_type": "code",
+      "source_file": "lib/env.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_env",
+      "community": 7,
+      "norm_label": "env.ts"
+    },
+    {
+      "label": "ServerEnvSchema",
+      "file_type": "code",
+      "source_file": "lib/env.ts",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "lib_env_serverenvschema",
+      "community": 7,
+      "norm_label": "serverenvschema"
+    },
+    {
+      "label": "serverEnv",
+      "file_type": "code",
+      "source_file": "lib/env.ts",
+      "source_location": "L69",
+      "_origin": "ast",
+      "id": "lib_env_serverenv",
+      "community": 7,
+      "norm_label": "serverenv"
+    },
+    {
+      "label": "publicEnv",
+      "file_type": "code",
+      "source_file": "lib/env.ts",
+      "source_location": "L94",
+      "_origin": "ast",
+      "id": "lib_env_publicenv",
+      "community": 7,
+      "norm_label": "publicenv"
+    },
+    {
+      "label": "getAdminEmails()",
+      "file_type": "code",
+      "source_file": "lib/env.ts",
+      "source_location": "L107",
+      "_origin": "ast",
+      "id": "lib_env_getadminemails",
+      "community": 7,
+      "norm_label": "getadminemails()"
+    },
+    {
+      "label": "prisma.ts",
+      "file_type": "code",
+      "source_file": "lib/prisma.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_prisma",
+      "community": 8,
+      "norm_label": "prisma.ts"
+    },
+    {
+      "label": "globalForPrisma",
+      "file_type": "code",
+      "source_file": "lib/prisma.ts",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "lib_prisma_globalforprisma",
+      "community": 8,
+      "norm_label": "globalforprisma"
+    },
+    {
+      "label": "utils.ts",
+      "file_type": "code",
+      "source_file": "lib/utils.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_utils",
+      "community": 5,
+      "norm_label": "utils.ts"
+    },
+    {
+      "label": "cn()",
+      "file_type": "code",
+      "source_file": "lib/utils.ts",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "lib_utils_cn",
+      "community": 5,
+      "norm_label": "cn()"
+    },
+    {
+      "label": "sleep()",
+      "file_type": "code",
+      "source_file": "lib/utils.ts",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "lib_utils_sleep",
+      "community": 5,
+      "norm_label": "sleep()"
+    },
+    {
+      "label": "fingerprint()",
+      "file_type": "code",
+      "source_file": "lib/utils.ts",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "lib_utils_fingerprint",
+      "community": 5,
+      "norm_label": "fingerprint()"
+    },
+    {
+      "label": "cleanMessage()",
+      "file_type": "code",
+      "source_file": "lib/utils.ts",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "lib_utils_cleanmessage",
+      "community": 5,
+      "norm_label": "cleanmessage()"
+    },
+    {
+      "label": "constantTimeEqual()",
+      "file_type": "code",
+      "source_file": "lib/utils.ts",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "lib_utils_constanttimeequal",
+      "community": 5,
+      "norm_label": "constanttimeequal()"
+    },
+    {
+      "label": "maskKey()",
+      "file_type": "code",
+      "source_file": "lib/utils.ts",
+      "source_location": "L63",
+      "_origin": "ast",
+      "id": "lib_utils_maskkey",
+      "community": 5,
+      "norm_label": "maskkey()"
+    },
+    {
+      "label": "next-env.d.ts",
+      "file_type": "code",
+      "source_file": "next-env.d.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "next_env_d",
+      "community": 12,
+      "norm_label": "next-env.d.ts"
+    },
+    {
+      "label": "next.config.mjs",
+      "file_type": "code",
+      "source_file": "next.config.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "next_config",
+      "community": 9,
+      "norm_label": "next.config.mjs"
+    },
+    {
+      "label": "nextConfig",
+      "file_type": "code",
+      "source_file": "next.config.mjs",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "next_config_nextconfig",
+      "community": 9,
+      "norm_label": "nextconfig"
+    },
+    {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "package",
+      "community": 3,
+      "norm_label": "package.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "package_name",
+      "community": 3,
+      "norm_label": "name"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "package_version",
+      "community": 3,
+      "norm_label": "version"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "package_private",
+      "community": 3,
+      "norm_label": "private"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "package_type",
+      "community": 3,
+      "norm_label": "type"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "package_scripts",
+      "community": 3,
+      "norm_label": "scripts"
+    },
+    {
+      "label": "dev",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "package_scripts_dev",
+      "community": 3,
+      "norm_label": "dev"
+    },
+    {
+      "label": "build",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "package_scripts_build",
+      "community": 3,
+      "norm_label": "build"
+    },
+    {
+      "label": "start",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "package_scripts_start",
+      "community": 3,
+      "norm_label": "start"
+    },
+    {
+      "label": "lint",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "package_scripts_lint",
+      "community": 3,
+      "norm_label": "lint"
+    },
+    {
+      "label": "typecheck",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "package_scripts_typecheck",
+      "community": 3,
+      "norm_label": "typecheck"
+    },
+    {
+      "label": "format",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "package_scripts_format",
+      "community": 3,
+      "norm_label": "format"
+    },
+    {
+      "label": "test",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "package_scripts_test",
+      "community": 3,
+      "norm_label": "test"
+    },
+    {
+      "label": "test:watch",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "package_scripts_test_watch",
+      "community": 3,
+      "norm_label": "test:watch"
+    },
+    {
+      "label": "test:e2e",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "package_scripts_test_e2e",
+      "community": 3,
+      "norm_label": "test:e2e"
+    },
+    {
+      "label": "prisma:generate",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "package_scripts_prisma_generate",
+      "community": 3,
+      "norm_label": "prisma:generate"
+    },
+    {
+      "label": "prisma:migrate",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "package_scripts_prisma_migrate",
+      "community": 3,
+      "norm_label": "prisma:migrate"
+    },
+    {
+      "label": "prisma:studio",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "package_scripts_prisma_studio",
+      "community": 3,
+      "norm_label": "prisma:studio"
+    },
+    {
+      "label": "prisma:push",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "package_scripts_prisma_push",
+      "community": 3,
+      "norm_label": "prisma:push"
+    },
+    {
+      "label": "dependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "package_dependencies",
+      "community": 0,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "@hookform/resolvers",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "package_dependencies_hookform_resolvers",
+      "community": 0,
+      "norm_label": "@hookform/resolvers"
+    },
+    {
+      "label": "@paypal/paypal-js",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "package_dependencies_paypal_paypal_js",
+      "community": 0,
+      "norm_label": "@paypal/paypal-js"
+    },
+    {
+      "label": "@paypal/react-paypal-js",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "package_dependencies_paypal_react_paypal_js",
+      "community": 0,
+      "norm_label": "@paypal/react-paypal-js"
+    },
+    {
+      "label": "@prisma/client",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "package_dependencies_prisma_client",
+      "community": 0,
+      "norm_label": "@prisma/client"
+    },
+    {
+      "label": "@react-pdf/renderer",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "package_dependencies_react_pdf_renderer",
+      "community": 0,
+      "norm_label": "@react-pdf/renderer"
+    },
+    {
+      "label": "@sentry/nextjs",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "package_dependencies_sentry_nextjs",
+      "community": 0,
+      "norm_label": "@sentry/nextjs"
+    },
+    {
+      "label": "@stripe/react-stripe-js",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "package_dependencies_stripe_react_stripe_js",
+      "community": 0,
+      "norm_label": "@stripe/react-stripe-js"
+    },
+    {
+      "label": "@stripe/stripe-js",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "package_dependencies_stripe_stripe_js",
+      "community": 0,
+      "norm_label": "@stripe/stripe-js"
+    },
+    {
+      "label": "@supabase/ssr",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "package_dependencies_supabase_ssr",
+      "community": 0,
+      "norm_label": "@supabase/ssr"
+    },
+    {
+      "label": "@supabase/supabase-js",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "package_dependencies_supabase_supabase_js",
+      "community": 0,
+      "norm_label": "@supabase/supabase-js"
+    },
+    {
+      "label": "@upstash/ratelimit",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "package_dependencies_upstash_ratelimit",
+      "community": 0,
+      "norm_label": "@upstash/ratelimit"
+    },
+    {
+      "label": "@upstash/redis",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "package_dependencies_upstash_redis",
+      "community": 0,
+      "norm_label": "@upstash/redis"
+    },
+    {
+      "label": "class-variance-authority",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "package_dependencies_class_variance_authority",
+      "community": 0,
+      "norm_label": "class-variance-authority"
+    },
+    {
+      "label": "clsx",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "package_dependencies_clsx",
+      "community": 0,
+      "norm_label": "clsx"
+    },
+    {
+      "label": "date-fns",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "package_dependencies_date_fns",
+      "community": 0,
+      "norm_label": "date-fns"
+    },
+    {
+      "label": "file-type",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "package_dependencies_file_type",
+      "community": 0,
+      "norm_label": "file-type"
+    },
+    {
+      "label": "framer-motion",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "package_dependencies_framer_motion",
+      "community": 0,
+      "norm_label": "framer-motion"
+    },
+    {
+      "label": "helmet",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "package_dependencies_helmet",
+      "community": 0,
+      "norm_label": "helmet"
+    },
+    {
+      "label": "isomorphic-dompurify",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L40",
+      "_origin": "ast",
+      "id": "package_dependencies_isomorphic_dompurify",
+      "community": 0,
+      "norm_label": "isomorphic-dompurify"
+    },
+    {
+      "label": "leo-profanity",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "package_dependencies_leo_profanity",
+      "community": 0,
+      "norm_label": "leo-profanity"
+    },
+    {
+      "label": "lucide-react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "package_dependencies_lucide_react",
+      "community": 0,
+      "norm_label": "lucide-react"
+    },
+    {
+      "label": "next",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "package_dependencies_next",
+      "community": 0,
+      "norm_label": "next"
+    },
+    {
+      "label": "next-themes",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "package_dependencies_next_themes",
+      "community": 0,
+      "norm_label": "next-themes"
+    },
+    {
+      "label": "qrcode",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "package_dependencies_qrcode",
+      "community": 0,
+      "norm_label": "qrcode"
+    },
+    {
+      "label": "razorpay",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "package_dependencies_razorpay",
+      "community": 0,
+      "norm_label": "razorpay"
+    },
+    {
+      "label": "react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "package_dependencies_react",
+      "community": 0,
+      "norm_label": "react"
+    },
+    {
+      "label": "react-dom",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "package_dependencies_react_dom",
+      "community": 0,
+      "norm_label": "react-dom"
+    },
+    {
+      "label": "react-easy-crop",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "package_dependencies_react_easy_crop",
+      "community": 0,
+      "norm_label": "react-easy-crop"
+    },
+    {
+      "label": "react-hook-form",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "package_dependencies_react_hook_form",
+      "community": 0,
+      "norm_label": "react-hook-form"
+    },
+    {
+      "label": "react-qr-code",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "package_dependencies_react_qr_code",
+      "community": 0,
+      "norm_label": "react-qr-code"
+    },
+    {
+      "label": "recharts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "package_dependencies_recharts",
+      "community": 0,
+      "norm_label": "recharts"
+    },
+    {
+      "label": "resend",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "package_dependencies_resend",
+      "community": 0,
+      "norm_label": "resend"
+    },
+    {
+      "label": "sharp",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "package_dependencies_sharp",
+      "community": 0,
+      "norm_label": "sharp"
+    },
+    {
+      "label": "stripe",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "package_dependencies_stripe",
+      "community": 0,
+      "norm_label": "stripe"
+    },
+    {
+      "label": "tailwind-merge",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "package_dependencies_tailwind_merge",
+      "community": 0,
+      "norm_label": "tailwind-merge"
+    },
+    {
+      "label": "tw-animate-css",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "package_dependencies_tw_animate_css",
+      "community": 0,
+      "norm_label": "tw-animate-css"
+    },
+    {
+      "label": "uuid",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "package_dependencies_uuid",
+      "community": 0,
+      "norm_label": "uuid"
+    },
+    {
+      "label": "zod",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L59",
+      "_origin": "ast",
+      "id": "package_dependencies_zod",
+      "community": 0,
+      "norm_label": "zod"
+    },
+    {
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L61",
+      "_origin": "ast",
+      "id": "package_devdependencies",
+      "community": 2,
+      "norm_label": "devdependencies"
+    },
+    {
+      "label": "@playwright/test",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "package_devdependencies_playwright_test",
+      "community": 2,
+      "norm_label": "@playwright/test"
+    },
+    {
+      "label": "@types/dompurify",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L63",
+      "_origin": "ast",
+      "id": "package_devdependencies_types_dompurify",
+      "community": 2,
+      "norm_label": "@types/dompurify"
+    },
+    {
+      "label": "@types/node",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L64",
+      "_origin": "ast",
+      "id": "package_devdependencies_types_node",
+      "community": 2,
+      "norm_label": "@types/node"
+    },
+    {
+      "label": "@types/qrcode",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L65",
+      "_origin": "ast",
+      "id": "package_devdependencies_types_qrcode",
+      "community": 2,
+      "norm_label": "@types/qrcode"
+    },
+    {
+      "label": "@types/react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L66",
+      "_origin": "ast",
+      "id": "package_devdependencies_types_react",
+      "community": 2,
+      "norm_label": "@types/react"
+    },
+    {
+      "label": "@types/react-dom",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "package_devdependencies_types_react_dom",
+      "community": 2,
+      "norm_label": "@types/react-dom"
+    },
+    {
+      "label": "@types/react-pdf",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L68",
+      "_origin": "ast",
+      "id": "package_devdependencies_types_react_pdf",
+      "community": 2,
+      "norm_label": "@types/react-pdf"
+    },
+    {
+      "label": "@types/recharts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L69",
+      "_origin": "ast",
+      "id": "package_devdependencies_types_recharts",
+      "community": 2,
+      "norm_label": "@types/recharts"
+    },
+    {
+      "label": "@types/supertest",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L70",
+      "_origin": "ast",
+      "id": "package_devdependencies_types_supertest",
+      "community": 2,
+      "norm_label": "@types/supertest"
+    },
+    {
+      "label": "@types/uuid",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L71",
+      "_origin": "ast",
+      "id": "package_devdependencies_types_uuid",
+      "community": 2,
+      "norm_label": "@types/uuid"
+    },
+    {
+      "label": "@vitejs/plugin-react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L72",
+      "_origin": "ast",
+      "id": "package_devdependencies_vitejs_plugin_react",
+      "community": 2,
+      "norm_label": "@vitejs/plugin-react"
+    },
+    {
+      "label": "@vitest/ui",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L73",
+      "_origin": "ast",
+      "id": "package_devdependencies_vitest_ui",
+      "community": 2,
+      "norm_label": "@vitest/ui"
+    },
+    {
+      "label": "dotenv",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L74",
+      "_origin": "ast",
+      "id": "package_devdependencies_dotenv",
+      "community": 2,
+      "norm_label": "dotenv"
+    },
+    {
+      "label": "prettier",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L75",
+      "_origin": "ast",
+      "id": "package_devdependencies_prettier",
+      "community": 2,
+      "norm_label": "prettier"
+    },
+    {
+      "label": "prisma",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "package_devdependencies_prisma",
+      "community": 2,
+      "norm_label": "prisma"
+    },
+    {
+      "label": "supabase",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L77",
+      "_origin": "ast",
+      "id": "package_devdependencies_supabase",
+      "community": 2,
+      "norm_label": "supabase"
+    },
+    {
+      "label": "supertest",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L78",
+      "_origin": "ast",
+      "id": "package_devdependencies_supertest",
+      "community": 2,
+      "norm_label": "supertest"
+    },
+    {
+      "label": "tailwindcss",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L79",
+      "_origin": "ast",
+      "id": "package_devdependencies_tailwindcss",
+      "community": 2,
+      "norm_label": "tailwindcss"
+    },
+    {
+      "label": "postcss",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L80",
+      "_origin": "ast",
+      "id": "package_devdependencies_postcss",
+      "community": 2,
+      "norm_label": "postcss"
+    },
+    {
+      "label": "autoprefixer",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L81",
+      "_origin": "ast",
+      "id": "package_devdependencies_autoprefixer",
+      "community": 2,
+      "norm_label": "autoprefixer"
+    },
+    {
+      "label": "tailwindcss-animate",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L82",
+      "_origin": "ast",
+      "id": "package_devdependencies_tailwindcss_animate",
+      "community": 2,
+      "norm_label": "tailwindcss-animate"
+    },
+    {
+      "label": "typescript",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L83",
+      "_origin": "ast",
+      "id": "package_devdependencies_typescript",
+      "community": 2,
+      "norm_label": "typescript"
+    },
+    {
+      "label": "vitest",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L84",
+      "_origin": "ast",
+      "id": "package_devdependencies_vitest",
+      "community": 2,
+      "norm_label": "vitest"
+    },
+    {
+      "label": "postcss.config.mjs",
+      "file_type": "code",
+      "source_file": "postcss.config.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "postcss_config",
+      "community": 18,
+      "norm_label": "postcss.config.mjs"
+    },
+    {
+      "label": "prisma.config.ts",
+      "file_type": "code",
+      "source_file": "prisma.config.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "prisma_config",
+      "community": 19,
+      "norm_label": "prisma.config.ts"
+    },
+    {
+      "label": "tailwind.config.ts",
+      "file_type": "code",
+      "source_file": "tailwind.config.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tailwind_config",
+      "community": 11,
+      "norm_label": "tailwind.config.ts"
+    },
+    {
+      "label": "config",
+      "file_type": "code",
+      "source_file": "tailwind.config.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "tailwind_config_config",
+      "community": 11,
+      "norm_label": "config"
+    },
+    {
+      "label": "tsconfig.json",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tsconfig",
+      "community": 1,
+      "norm_label": "tsconfig.json"
+    },
+    {
+      "label": "compilerOptions",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions",
+      "community": 1,
+      "norm_label": "compileroptions"
+    },
+    {
+      "label": "target",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_target",
+      "community": 1,
+      "norm_label": "target"
+    },
+    {
+      "label": "lib",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_lib",
+      "community": 1,
+      "norm_label": "lib"
+    },
+    {
+      "label": "allowJs",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_allowjs",
+      "community": 1,
+      "norm_label": "allowjs"
+    },
+    {
+      "label": "skipLibCheck",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_skiplibcheck",
+      "community": 1,
+      "norm_label": "skiplibcheck"
+    },
+    {
+      "label": "strict",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_strict",
+      "community": 1,
+      "norm_label": "strict"
+    },
+    {
+      "label": "noEmit",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_noemit",
+      "community": 1,
+      "norm_label": "noemit"
+    },
+    {
+      "label": "esModuleInterop",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_esmoduleinterop",
+      "community": 1,
+      "norm_label": "esmoduleinterop"
+    },
+    {
+      "label": "module",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_module",
+      "community": 1,
+      "norm_label": "module"
+    },
+    {
+      "label": "moduleResolution",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_moduleresolution",
+      "community": 1,
+      "norm_label": "moduleresolution"
+    },
+    {
+      "label": "resolveJsonModule",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_resolvejsonmodule",
+      "community": 1,
+      "norm_label": "resolvejsonmodule"
+    },
+    {
+      "label": "isolatedModules",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_isolatedmodules",
+      "community": 1,
+      "norm_label": "isolatedmodules"
+    },
+    {
+      "label": "jsx",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_jsx",
+      "community": 1,
+      "norm_label": "jsx"
+    },
+    {
+      "label": "incremental",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_incremental",
+      "community": 1,
+      "norm_label": "incremental"
+    },
+    {
+      "label": "verbatimModuleSyntax",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_verbatimmodulesyntax",
+      "community": 1,
+      "norm_label": "verbatimmodulesyntax"
+    },
+    {
+      "label": "plugins",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_plugins",
+      "community": 1,
+      "norm_label": "plugins"
+    },
+    {
+      "label": "paths",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_paths",
+      "community": 1,
+      "norm_label": "paths"
+    },
+    {
+      "label": "@/*",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "tsconfig_paths",
+      "community": 1,
+      "norm_label": "@/*"
+    },
+    {
+      "label": "forceConsistentCasingInFileNames",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_forceconsistentcasinginfilenames",
+      "community": 1,
+      "norm_label": "forceconsistentcasinginfilenames"
+    },
+    {
+      "label": "noUncheckedIndexedAccess",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_nouncheckedindexedaccess",
+      "community": 1,
+      "norm_label": "nouncheckedindexedaccess"
+    },
+    {
+      "label": "noImplicitOverride",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_noimplicitoverride",
+      "community": 1,
+      "norm_label": "noimplicitoverride"
+    },
+    {
+      "label": "noFallthroughCasesInSwitch",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_nofallthroughcasesinswitch",
+      "community": 1,
+      "norm_label": "nofallthroughcasesinswitch"
+    },
+    {
+      "label": "useUnknownInCatchVariables",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_useunknownincatchvariables",
+      "community": 1,
+      "norm_label": "useunknownincatchvariables"
+    },
+    {
+      "label": "include",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "tsconfig_include",
+      "community": 1,
+      "norm_label": "include"
+    },
+    {
+      "label": "exclude",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "tsconfig_exclude",
+      "community": 1,
+      "norm_label": "exclude"
+    },
+    {
+      "label": "lucide-react@1.22.0 minimum release age exclusion",
+      "file_type": "concept",
+      "source_file": "pnpm-workspace.yaml",
+      "source_location": "lines 6-7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pnpm_workspace_lucide_react_1_22_0",
+      "community": 13,
+      "norm_label": "lucide-react@1.22.0 minimum release age exclusion"
+    },
+    {
+      "label": "@prisma/engines build restriction",
+      "file_type": "concept",
+      "source_file": "pnpm-workspace.yaml",
+      "source_location": "line 2",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pnpm_workspace_prisma_engines_disallow",
+      "community": 15,
+      "norm_label": "@prisma/engines build restriction"
+    },
+    {
+      "label": "@sentry/cli build restriction",
+      "file_type": "concept",
+      "source_file": "pnpm-workspace.yaml",
+      "source_location": "line 3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pnpm_workspace_sentry_cli_disallow",
+      "community": 16,
+      "norm_label": "@sentry/cli build restriction"
+    },
+    {
+      "label": "prisma build restriction",
+      "file_type": "concept",
+      "source_file": "pnpm-workspace.yaml",
+      "source_location": "line 4",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pnpm_workspace_prisma_disallow",
+      "community": 14,
+      "norm_label": "prisma build restriction"
+    },
+    {
+      "label": "sharp build restriction",
+      "file_type": "concept",
+      "source_file": "pnpm-workspace.yaml",
+      "source_location": "line 5",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pnpm_workspace_sharp_disallow",
+      "community": 17,
+      "norm_label": "sharp build restriction"
+    },
+    {
+      "label": "Scoop Luck Platform",
+      "file_type": "concept",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 14-37",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_scoop_luck",
+      "community": 4,
+      "norm_label": "scoop luck platform"
+    },
+    {
+      "label": "Admin Role",
+      "file_type": "concept",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 23-26",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_admin_role",
+      "community": 4,
+      "norm_label": "admin role"
+    },
+    {
+      "label": "Viewer Role",
+      "file_type": "concept",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 28-31",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_viewer_role",
+      "community": 4,
+      "norm_label": "viewer role"
+    },
+    {
+      "label": "Guest Role",
+      "file_type": "concept",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 33-36",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_guest_role",
+      "community": 4,
+      "norm_label": "guest role"
+    },
+    {
+      "label": "Razorpay Payment Gateway",
+      "file_type": "concept",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 57-64",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_razorpay",
+      "community": 4,
+      "norm_label": "razorpay payment gateway"
+    },
+    {
+      "label": "Stripe Payment Gateway",
+      "file_type": "concept",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 65-69",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_stripe",
+      "community": 4,
+      "norm_label": "stripe payment gateway"
+    },
+    {
+      "label": "PayPal Payment Gateway",
+      "file_type": "concept",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 70-74",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_paypal",
+      "community": 4,
+      "norm_label": "paypal payment gateway"
+    },
+    {
+      "label": "Superchat Tier System",
+      "file_type": "rationale",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 124-156",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_superchat_tier_system",
+      "community": 4,
+      "norm_label": "superchat tier system"
+    },
+    {
+      "label": "Prisma User Model",
+      "file_type": "concept",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 437-445",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_user_model",
+      "community": 4,
+      "norm_label": "prisma user model"
+    },
+    {
+      "label": "Prisma Superchat Model",
+      "file_type": "concept",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 447-466",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_superchat_model",
+      "community": 4,
+      "norm_label": "prisma superchat model"
+    },
+    {
+      "label": "Prisma AdminSession Model",
+      "file_type": "concept",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 468-475",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_admin_session_model",
+      "community": 4,
+      "norm_label": "prisma adminsession model"
+    },
+    {
+      "label": "Webhook Signature Verification Pattern",
+      "file_type": "rationale",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 165-194, 372-378",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_webhook_verification",
+      "community": 4,
+      "norm_label": "webhook signature verification pattern"
+    },
+    {
+      "label": "Idempotency Key Pattern",
+      "file_type": "rationale",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 64, 197-198, 375",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_idempotency_keys",
+      "community": 4,
+      "norm_label": "idempotency key pattern"
+    },
+    {
+      "label": "Rate Limiting Strategy",
+      "file_type": "rationale",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 361-368",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_rate_limiting",
+      "community": 10,
+      "norm_label": "rate limiting strategy"
+    },
+    {
+      "label": "Row Level Security Policy",
+      "file_type": "rationale",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 406-413",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_row_level_security",
+      "community": 4,
+      "norm_label": "row level security policy"
+    },
+    {
+      "label": "Cloudflare Turnstile CAPTCHA",
+      "file_type": "concept",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 399-401",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_cloudflare_turnstile",
+      "community": 10,
+      "norm_label": "cloudflare turnstile captcha"
+    },
+    {
+      "label": "Avatar Cropper Feature",
+      "file_type": "concept",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 224-241",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_avatar_cropper",
+      "community": 4,
+      "norm_label": "avatar cropper feature"
+    },
+    {
+      "label": "Invoice PDF Generation",
+      "file_type": "concept",
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 206-213",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "superchat_platform_prompt_invoice_generation",
+      "community": 4,
+      "norm_label": "invoice pdf generation"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".prettierrc.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "prettierrc",
+      "target": "prettierrc_plugins",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".prettierrc.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "prettierrc",
+      "target": "prettierrc_printwidth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".prettierrc.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "prettierrc",
+      "target": "prettierrc_schema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".prettierrc.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "prettierrc",
+      "target": "prettierrc_semi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".prettierrc.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "prettierrc",
+      "target": "prettierrc_singlequote",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".prettierrc.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "prettierrc",
+      "target": "prettierrc_tabwidth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".prettierrc.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "prettierrc",
+      "target": "prettierrc_trailingcomma",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/layout.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "app_layout",
+      "target": "app_layout_metadata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/layout.tsx",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "app_layout",
+      "target": "app_layout_rootlayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/layout.tsx",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "app_layout",
+      "target": "app_layout_viewport",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/layout.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_layout",
+      "target": "lib_utils",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/layout.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_layout",
+      "target": "lib_utils_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/layout.tsx",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "app_layout_rootlayout",
+      "target": "lib_utils_cn"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/env.ts",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "lib_env",
+      "target": "lib_env_getadminemails",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/env.ts",
+      "source_location": "L94",
+      "weight": 1.0,
+      "source": "lib_env",
+      "target": "lib_env_publicenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/env.ts",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "lib_env",
+      "target": "lib_env_serverenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/env.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "lib_env",
+      "target": "lib_env_serverenvschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/prisma.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "lib_prisma",
+      "target": "lib_prisma_globalforprisma",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/utils.ts",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "lib_utils",
+      "target": "lib_utils_cleanmessage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/utils.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "lib_utils",
+      "target": "lib_utils_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/utils.ts",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "lib_utils",
+      "target": "lib_utils_constanttimeequal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/utils.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "lib_utils",
+      "target": "lib_utils_fingerprint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/utils.ts",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "lib_utils",
+      "target": "lib_utils_maskkey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/utils.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "lib_utils",
+      "target": "lib_utils_sleep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "next.config.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "next_config",
+      "target": "next_config_nextconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_devdependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_private",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_scripts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_build",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_dev",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_format",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_lint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_prisma_generate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_prisma_migrate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_prisma_push",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_prisma_studio",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_start",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_test_e2e",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_test_watch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_typecheck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_class_variance_authority",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_clsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_date_fns",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_file_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_framer_motion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_helmet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_hookform_resolvers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_isomorphic_dompurify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_leo_profanity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_lucide_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_next",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_next_themes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_paypal_paypal_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_paypal_react_paypal_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_prisma_client",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_qrcode",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_razorpay",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_dom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_easy_crop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_hook_form",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_pdf_renderer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_qr_code",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_recharts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_resend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_sentry_nextjs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_sharp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_stripe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_stripe_react_stripe_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_stripe_stripe_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_supabase_ssr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_supabase_supabase_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_tailwind_merge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_tw_animate_css",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_upstash_ratelimit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_upstash_redis",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_uuid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_zod",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_autoprefixer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_dotenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_playwright_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_postcss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_prettier",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_prisma",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_supertest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_tailwindcss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_tailwindcss_animate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_dompurify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_node",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_qrcode",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_react_dom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_react_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_recharts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_supertest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_uuid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_typescript",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_vitejs_plugin_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_vitest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_vitest_ui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tailwind.config.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "tailwind_config",
+      "target": "tailwind_config_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "tsconfig",
+      "target": "tsconfig_compileroptions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "tsconfig",
+      "target": "tsconfig_exclude",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "tsconfig",
+      "target": "tsconfig_include",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_allowjs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_esmoduleinterop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_forceconsistentcasinginfilenames",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_incremental",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_isolatedmodules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_lib",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_module",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_moduleresolution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_noemit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_nofallthroughcasesinswitch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_noimplicitoverride",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_nouncheckedindexedaccess",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_plugins",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_resolvejsonmodule",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_skiplibcheck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_strict",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_target",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_useunknownincatchvariables",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_verbatimmodulesyntax",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "tsconfig_compileroptions_paths",
+      "target": "tsconfig_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 23-26",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_admin_role",
+      "target": "superchat_platform_prompt_scoop_luck"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 224-241",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_avatar_cropper",
+      "target": "superchat_platform_prompt_scoop_luck"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 33-36",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_guest_role",
+      "target": "superchat_platform_prompt_scoop_luck"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 206-213",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_invoice_generation",
+      "target": "superchat_platform_prompt_scoop_luck"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 70-74",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_paypal",
+      "target": "superchat_platform_prompt_scoop_luck"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 57-64",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_razorpay",
+      "target": "superchat_platform_prompt_scoop_luck"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 406-413",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_row_level_security",
+      "target": "superchat_platform_prompt_scoop_luck"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 65-69",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_stripe",
+      "target": "superchat_platform_prompt_scoop_luck"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 124-156",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_superchat_tier_system",
+      "target": "superchat_platform_prompt_scoop_luck"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 28-31",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_viewer_role",
+      "target": "superchat_platform_prompt_scoop_luck"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 262-269, 468-475",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_admin_session_model",
+      "target": "superchat_platform_prompt_admin_role"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 224-241, 28-31",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_avatar_cropper",
+      "target": "superchat_platform_prompt_viewer_role"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 206-213, 165-169",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_invoice_generation",
+      "target": "superchat_platform_prompt_razorpay"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 64, 197-198",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_razorpay",
+      "target": "superchat_platform_prompt_idempotency_keys"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 57-74",
+      "weight": 0.85,
+      "source": "superchat_platform_prompt_razorpay",
+      "target": "superchat_platform_prompt_paypal"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 57-74",
+      "weight": 0.85,
+      "source": "superchat_platform_prompt_razorpay",
+      "target": "superchat_platform_prompt_stripe"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 165-167, 372-373",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_razorpay",
+      "target": "superchat_platform_prompt_webhook_verification"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 65-74",
+      "weight": 0.85,
+      "source": "superchat_platform_prompt_stripe",
+      "target": "superchat_platform_prompt_paypal"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 183-184",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_stripe",
+      "target": "superchat_platform_prompt_webhook_verification"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "line 192",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_paypal",
+      "target": "superchat_platform_prompt_webhook_verification"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 124-156, 453-460",
+      "weight": 0.85,
+      "source": "superchat_platform_prompt_superchat_tier_system",
+      "target": "superchat_platform_prompt_superchat_model"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "line 450",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_superchat_model",
+      "target": "superchat_platform_prompt_user_model"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 197, 374-376",
+      "weight": 0.85,
+      "source": "superchat_platform_prompt_webhook_verification",
+      "target": "superchat_platform_prompt_idempotency_keys"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "superchat_platform_prompt.txt",
+      "source_location": "lines 358, 399-401",
+      "weight": 1.0,
+      "source": "superchat_platform_prompt_rate_limiting",
+      "target": "superchat_platform_prompt_cloudflare_turnstile"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "payment_gateway_strategy",
+      "label": "Payment Gateway Strategy",
+      "nodes": [
+        "superchat_platform_prompt_razorpay",
+        "superchat_platform_prompt_stripe",
+        "superchat_platform_prompt_paypal"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Z:\\Meme\\ScoopLuck\\superchat_platform_prompt.txt"
+    },
+    {
+      "id": "user_role_system",
+      "label": "User Role System",
+      "nodes": [
+        "superchat_platform_prompt_admin_role",
+        "superchat_platform_prompt_viewer_role",
+        "superchat_platform_prompt_guest_role"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Z:\\Meme\\ScoopLuck\\superchat_platform_prompt.txt"
+    },
+    {
+      "id": "payment_integrity_security_layer",
+      "label": "Payment Integrity Security Layer",
+      "nodes": [
+        "superchat_platform_prompt_webhook_verification",
+        "superchat_platform_prompt_idempotency_keys",
+        "superchat_platform_prompt_rate_limiting"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Z:\\Meme\\ScoopLuck\\superchat_platform_prompt.txt"
+    }
+  ]
+}

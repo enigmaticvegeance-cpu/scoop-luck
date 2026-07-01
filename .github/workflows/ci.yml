@@ -1,0 +1,132 @@
+name: ci
+
+# Cancel in-progress runs on the same PR when a new commit is pushed.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # 1. TypeScript only. Fastest check; runs first so a type error fails
+  #    the PR before any heavier job spins up.
+  # ---------------------------------------------------------------------------
+  typecheck:
+    name: typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+
+  # ---------------------------------------------------------------------------
+  # 2. Vitest unit tests. Pure unit — no DB / Supabase / browser needed.
+  # ---------------------------------------------------------------------------
+  vitest:
+    name: vitest
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+
+  # ---------------------------------------------------------------------------
+  # 3. Production build. We don't have real env in CI, so the build runs
+  #    with SCOOP_LUCK_SKIP_ENV=1 to bypass the production fail-fast check
+  #    (lib/env.ts:REQUIRED_IN_PRODUCTION). Vercel's actual production build
+  #    runs with real env and DOES hit the fail-fast path on misconfig.
+  # ---------------------------------------------------------------------------
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SCOOP_LUCK_SKIP_ENV: "1"
+      DATABASE_URL: postgres://stub:stub@127.0.0.1:1/stub
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+
+  # ---------------------------------------------------------------------------
+  # 4. Playwright accessibility sweep. Needs Postgres on 51214 for the
+  #    admin dashboard cases (Phase 6 E2E auth bypass seam).
+  #
+  #    Workflow:
+  #      a) Start `prisma dev` as a background process (it spawns a local
+  #         Postgres on 51213/51214).
+  #      b) Poll 51214 until it's listening (up to 60s).
+  #      c) `prisma db push --skip-generate` to apply the schema.
+  #         --skip-generate because the postinstall hook already ran.
+  #      d) Install Chromium with system deps (one-time per runner).
+  #      e) `pnpm axe` — playwright.config.ts handles the rest, including
+  #         launching its own dev server with the e2e bypass env vars.
+  # ---------------------------------------------------------------------------
+  axe:
+    name: axe (Playwright + @axe-core/playwright)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: Boot prisma dev (Postgres on 51214)
+        run: |
+          set -e
+          nohup pnpm exec prisma dev > prisma-dev.log 2>&1 &
+          for i in $(seq 1 60); do
+            if (echo > /dev/tcp/127.0.0.1/51214) 2>/dev/null; then
+              echo "prisma dev ready after ${i}s"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "prisma dev failed to listen on 51214 after 60s" >&2
+          tail -50 prisma-dev.log >&2 || true
+          exit 1
+
+      - name: Apply schema (db push)
+        run: pnpm exec prisma db push --skip-generate
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Run axe sweep
+        run: pnpm axe
+
+      - name: Upload Playwright HTML report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-${{ github.run_id }}
+          path: |
+            tests/e2e/.playwright-html/
+            prisma-dev.log
+          if-no-files-found: ignore
+          retention-days: 7

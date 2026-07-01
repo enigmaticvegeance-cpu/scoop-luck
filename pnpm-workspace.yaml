@@ -1,0 +1,10 @@
+allowBuilds:
+  '@prisma/engines': false
+  '@sentry/cli': false
+  prisma: false
+  sharp: false
+minimumReleaseAgeExclude:
+  - lucide-react@1.22.0
+overrides:
+  postcss: ^8.5.10
+  '@hono/node-server': ^1.19.13

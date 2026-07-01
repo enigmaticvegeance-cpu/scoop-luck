@@ -1,0 +1,32 @@
+node_modules
+# Keep environment variables out of version control
+.env
+
+/generated
+
+.vercel
+.env*
+
+# Next.js build output
+.next/
+out/
+
+# TypeScript incremental build cache
+*.tsbuildinfo
+
+# Logs (incl. leftover phase artifacts)
+*.log
+axe-run-*.log
+next-dev-test*.log
+
+# Playwright artifacts
+test-results/
+playwright-report/
+tests/e2e/.playwright-html/
+playwright/.cache/
+
+# Editor / OS noise
+.DS_Store
+.vscode/
+.idea/
+Thumbs.db

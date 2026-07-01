@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Scoop Luck design tokens — every value here is also a Tailwind utility.
+ * Dark mode is the default (next-themes applies class="dark" by default).
+ * Light mode tokens are kept minimal for accessibility; the app should be
+ * tested primarily in dark.
+ */
+@layer base {
+  :root,
+  .dark {
+    --bg-base: #0a0a0f;
+    --bg-surface: #12121a;
+    --bg-elevated: #1a1a26;
+    --border: #2a2a3a;
+
+    --text-primary: #f0f0ff;
+    --text-muted: #8888aa;
+
+    --accent-cyan: #00ffff;
+    --accent-purple: #7c3aed;
+    --accent-amber: #f59e0b;
+    --accent-green: #10b981;
+    --accent-red: #ef4444;
+
+    --glow-cyan: 0 0 20px rgba(0, 255, 255, 0.4);
+
+    /* shadcn standard tokens — dark-tuned */
+    --background: var(--bg-base);
+    --foreground: var(--text-primary);
+    --card: var(--bg-surface);
+    --card-foreground: var(--text-primary);
+    --popover: var(--bg-elevated);
+    --popover-foreground: var(--text-primary);
+    --primary: var(--accent-cyan);
+    --primary-foreground: #0a0a0f;
+    --secondary: var(--bg-elevated);
+    --secondary-foreground: var(--text-primary);
+    --muted: var(--bg-elevated);
+    --muted-foreground: var(--text-muted);
+    --accent: var(--bg-elevated);
+    --accent-foreground: var(--text-primary);
+    --destructive: var(--accent-red);
+    --destructive-foreground: #ffffff;
+    --input: var(--bg-elevated);
+    --ring: var(--accent-cyan);
+  }
+
+  .light {
+    --bg-base: #f7f7fb;
+    --bg-surface: #ffffff;
+    --bg-elevated: #f0f0f6;
+    --border: #dadae6;
+
+    --text-primary: #0a0a14;
+    --text-muted: #5a5a76;
+
+    --background: var(--bg-base);
+    --foreground: var(--text-primary);
+    --card: var(--bg-surface);
+    --card-foreground: var(--text-primary);
+    --popover: var(--bg-elevated);
+    --popover-foreground: var(--text-primary);
+    --primary: #0e7490;
+    --primary-foreground: #ffffff;
+    --ring: #0e7490;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-base text-ink antialiased font-sans;
+    /* Subtle ambient gradient — keeps depth without competing with content */
+    background-image:
+      radial-gradient(at 12% 0%, rgba(124, 58, 237, 0.08), transparent 45%),
+      radial-gradient(at 88% 100%, rgba(0, 255, 255, 0.06), transparent 50%);
+    background-attachment: fixed;
+  }
+
+  /* Visible focus ring on every interactive element — accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-[var(--ring)] ring-offset-2 ring-offset-[var(--bg-base)];
+  }
+
+  /* Always show caret on inputs */
+  input,
+  textarea,
+  select {
+    caret-color: var(--accent-cyan);
+  }
+}
+
+@layer components {
+  /* Glassmorphism surface used by cards / modals / popovers */
+  .glass {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+  }
+
+  /* Tier accent glow rings — the prompt's tier table maps here */
+  .tier-glow-cyan {
+    box-shadow: 0 0 24px rgba(0, 255, 255, 0.35);
+  }
+  .tier-glow-purple {
+    box-shadow: 0 0 24px rgba(124, 58, 237, 0.4);
+  }
+  .tier-glow-amber {
+    box-shadow: 0 0 24px rgba(245, 158, 11, 0.4);
+  }
+  .tier-glow-green {
+    box-shadow: 0 0 24px rgba(16, 185, 129, 0.4);
+  }
+  .tier-glow-red {
+    box-shadow: 0 0 24px rgba(239, 68, 68, 0.45);
+  }
+  .tier-glow-orange {
+    box-shadow: 0 0 26px rgba(249, 115, 22, 0.55);
+    animation: pulse-glow 2.4s ease-in-out infinite;
+  }
+  .tier-glow-pink {
+    box-shadow: 0 0 26px rgba(236, 72, 153, 0.55);
+    animation: pulse-glow 2.4s ease-in-out infinite;
+  }
+  .tier-glow-violet {
+    box-shadow: 0 0 26px rgba(139, 92, 246, 0.55);
+    animation: pulse-glow 2.4s ease-in-out infinite;
+  }
+  .tier-glow-gold {
+    box-shadow: 0 0 32px rgba(255, 215, 0, 0.6);
+    position: relative;
+  }
+  .tier-glow-gold::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(90deg, #ff0080, #ff8c00, #ffd700, #00ff80, #00ffff, #ff0080);
+    background-size: 300% 100%;
+    animation: border-rainbow 3s linear infinite;
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Reduce motion preference respected across all animations */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  /* Visually-hidden but accessible to screen readers */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
